@@ -39,6 +39,120 @@
 	gap: var(--spacing-base);
 }
 
+/* 공통 메인 콘텐츠 섹션 제목 */
+.appMain [class*="__title"] {
+  margin-bottom: var(--spacing-base);
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+}
+
+.appMain [class*="__koTitle"]{
+	font-size: var(--text-md);
+	font-weight: 700;
+}
+
+.sprite{
+	height: 3.75rem;
+	padding-left: 4.625rem;
+	background-image: url(../images/sprite_main.png);
+	background-repeat: no-repeat;
+}
+
+.spriteNews{
+	background-position: 0 -230px;
+}
+
+
+.spriteBook{
+	background-position: 0 0;
+}
+
+.spriteBoard{
+	background-position: 0 -115px;
+}
+
+.spriteFavorite{
+	background-position: 0 -345px;
+}
+
+.spriteTwitter{
+	background-position: 0 -460px;
+}
+
+.accentBook{
+	color: var(--accent-book);
+}
+
+.accentNews{
+	color: var(--accent-news);
+}
+
+.accentFavorite{
+	color: var(--accent-favorite);
+}
+
+.accentBoard{
+	color: var(--accent-board);
+}
+
+.accentTwitter{
+	color: var(--accent-twitter);
+}
+
+/* 공통 추천서적 */
+.book{
+	/* background: lightgreen; */
+}
+
+.book__cover{
+	/* background: yellow; */
+	text-align: center;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.book__coverCaption{
+	margin-top: var(--spacing-sm);
+	line-height: 1.6;
+}
+
+.book__info{
+	/* background: red; */
+	text-align: center;
+	margin-top: var(--spacing-sm);
+}
+
+.book__info *{
+	display: inline;
+}
+
+.ratingStar{
+	display: block;
+	font-size: var(--text-xl);
+}
+
+/* 공통 새소식 */
+.news{
+	/* background: orange; */
+}
+
+/* 공통 게시판 */
+.board{
+	/* background: lightsalmon; */
+}
+
+/* 공통 인기사이트 */
+.favorite{
+	/* background: aquamarine; */
+}
+
+/* 공통 트위터 */
+.twitter{
+	/* background: burlywood; */
+}
+
 
 /* 공통 멤버서비스 */
 .memberOnly {
@@ -215,13 +329,14 @@ input[type="search"] {
   }
 	/* 모바일 메인 컨텐츠 */
 	.appMain {
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: 1fr;
 		grid-template-rows: auto;
-	}
-
-	/* 모바일 새소식 */
-	.news{
-		grid-area: 1/1/2/3;
+		grid-template-areas: 
+			"book"
+			"news"
+			"board"
+			"favorite"
+			"twitter";
 	}
 }
 
@@ -260,6 +375,7 @@ input[type="search"] {
 
 	/* 데스크탑 메인 메뉴 */
 
+
   .menu {
     background: var(--secondary-color);
     padding: var(--spacing-base) var(--spacing-lg);
@@ -281,6 +397,36 @@ input[type="search"] {
 		font-size: 1.2rem;
 		font-weight: 700;
     text-shadow: 1px 1px 0 var(--black), -1px -1px 0 var(--black);
+  }
+
+	/* 데스크탑 메인 콘텐츠 그리드 */
+	.appMain {
+		max-width: var(--container-width);
+		margin-left: auto;
+		margin-right: auto;
+		/* border: 1px solid red; */
+		grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas:
+      "news news news news news news news news news news news news"
+      "book book book book twitter twitter twitter twitter twitter favorite favorite favorite"
+      "book book book book . board board board board board board board";
+	}
+
+  .book {
+    grid-area: book;
+  }
+  .news {
+    grid-area: news;
+  }
+  .board {
+    grid-area: board;
+  }
+  .favorite {
+    grid-area: favorite;
+  }
+  .twitter {
+    grid-area: twitter;
   }
 
 }
